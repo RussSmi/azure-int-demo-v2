@@ -1,0 +1,3 @@
+Create the devops pipeline for the function.
+The function app needs to exist first.
+az functionapp devops-pipeline create --organization-name rusmith --project-name IntegrationDemoV2
