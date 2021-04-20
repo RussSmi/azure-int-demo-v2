@@ -2,6 +2,10 @@ az account set -s ca9ae6cf-2ab2-48d0-981d-c1030fd74a64
 alias tf=terraform
 tf plan -var environment=nonprod
 
+https://github.com/RussSmi/azure-int-demo-v2.git
+
 Create the devops pipeline for the function.
 The function app needs to exist first.
 az functionapp devops-pipeline create --organization-name rusmith --project-name IntegrationDemoV2
+
+
