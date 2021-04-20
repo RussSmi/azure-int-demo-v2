@@ -19,23 +19,15 @@ variable "tags" {
   }
 }
 
-variable "pwdsecrets" {
-  type    = list(any)
-  default = ["jumpuser"]
-}
-
 variable "keysecrets" {
   type    = list(any)
   default = ["monitor-key"]
 }
 
-variable "object-ids" {
-  type    = list(any)
-  default = ["96b43a71-7601-4719-9235-eff0b530b157","2933b5e7-efa0-49d3-9963-0a8a33ec2da2"] #Put any object ids that need key vault access here
-}
-
 # The following variables must  be set each time
 variable "environment" {
 }
+
+variable "log_analytics_workspace_id" {}
 
 
