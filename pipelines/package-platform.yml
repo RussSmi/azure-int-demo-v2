@@ -15,7 +15,7 @@ trigger:
     - env
     - backend*.hcl
     - '*.tf'      
-  exclude:
+    exclude:
       - base
       - tfstate
 
