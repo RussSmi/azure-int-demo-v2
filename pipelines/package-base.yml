@@ -15,6 +15,7 @@ trigger:
       - functions
       - logicapps
       - notes
+      - pipelines
       - tfstate
       - .gitignore
       - azure-int-demo-v2.code-workspace
