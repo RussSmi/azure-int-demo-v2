@@ -13,7 +13,7 @@ terraform {
     }
   }
   backend "azurerm" {}
-  required_version = "= 0.14.4"
+  required_version = "= 0.14.8"
 }
 
 resource "azurerm_resource_group" "base" {
@@ -83,7 +83,7 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "keyvault" {
-  name                           = "example"
+  name                           = "${azurerm_key_vault.keyvault.name}-diags"
   target_resource_id             = azurerm_key_vault.keyvault.id
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.log_analytics.id
   log_analytics_destination_type = "Dedicated"
