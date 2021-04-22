@@ -68,14 +68,33 @@
       }
     },
     {
-      "type": "func",
-      "dependsOn": "build",
+      "label": "generateDebugSymbols",
+      "command": "dotnet",
+      "args": [
+        "${input:getDebugSymbolDll}"
+      ],
+      "type": "process",
+      "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/functions/bin/Debug/netcoreapp3.1"
-      },
+        "cwd": "${workspaceFolder}/logicapps"
+      }
+    },
+    {
+      "type": "func",
       "command": "host start",
+      "problemMatcher": "$func-watch",
       "isBackground": true,
-      "problemMatcher": "$func-dotnet-watch"
+      "dependsOn": "generateDebugSymbols",
+      "options": {
+        "cwd": "${workspaceFolder}/logicapps"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "getDebugSymbolDll",
+      "type": "command",
+      "command": "azureLogicAppsV2.getDebugSymbolDll"
     }
   ]
 }
