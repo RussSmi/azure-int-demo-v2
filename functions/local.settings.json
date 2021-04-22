@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "WORKFLOWS_TENANT_ID": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "WORKFLOWS_SUBSCRIPTION_ID": "ca9ae6cf-2ab2-48d0-981d-c1030fd74a64",
+    "WORKFLOWS_RESOURCE_GROUP_NAME": "rg-uks-ais-demo-lav2-receive-nonprod",
+    "WORKFLOWS_LOCATION_NAME": "uksouth",
+    "FUNCTIONS_WORKER_RUNTIME": "node"
+  }
+}

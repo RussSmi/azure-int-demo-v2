@@ -1,0 +1,73 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Send_Message": {
+                "type": "ServiceProvider",
+                "inputs": {
+                    "parameters": {
+                        "entityName": "sbtopic-ais-demo-nonprod",
+                        "message": {
+                            "contentData": "@outputs('Transform_JSON_To_JSON')?['body']",
+                            "contentType": "application/json"
+                        }
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "serviceBus",
+                        "operationId": "sendMessage",
+                        "serviceProviderId": "/serviceProviders/serviceBus"
+                    }
+                },
+                "runAfter": {
+                    "Transform_JSON_To_JSON": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Transform_JSON_To_JSON": {
+                "type": "Liquid",
+                "kind": "JsonToJson",
+                "inputs": {
+                    "content": "@triggerBody()?['content']",
+                    "map": {
+                        "name": "jsontrans.liquid"
+                    }
+                },
+                "runAfter": {}
+            }
+        },
+        "triggers": {
+            "manual": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "content": {
+                                "type": "object",
+                                "properties": {
+                                    "devices": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {}
+    },
+    "kind": "Stateful"
+}

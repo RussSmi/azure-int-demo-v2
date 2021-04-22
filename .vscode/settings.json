@@ -6,5 +6,9 @@
     "azureFunctions.deploySubpath": "functions/bin/Release/netcoreapp3.1/publish",
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~3",
-    "azureFunctions.preDeployTask": "publish"
+    "azureFunctions.preDeployTask": "publish",
+    "azureLogicAppsV2.deploySubpath": "logicapps",
+    "azureLogicAppsV2.projectLanguage": "JavaScript",
+    "azureLogicAppsV2.projectRuntime": "~3",
+    "azureLogicAppsV2.projectSubpath": "functions"
 }
