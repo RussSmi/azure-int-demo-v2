@@ -2,22 +2,22 @@
 
 variables:
 
-  projectName: 'logicappsample'
-  suffix: 'devw'
+  projectName: 'lappaisdemo$'
+  suffix: 'nonprod'
 
   # TODO: Fill in with the name of your Azure service connection
   devServiceConnection: ''
 
   # Resource Group
-  resourceGroupLocation: 'westus'
-  resourceGroupName: 'rg-wus-$(projectName)-$(suffix)'
+  resourceGroupLocation: 'uksouth'
+  resourceGroupName: 'rg-uks-ais-demo-lav2-receive-$(suffix)'
 
   # Storage
   storageName: 'sa$(projectName)$(suffix)'
   appServicePlanName: 'asp$(projectName)$(suffix)'
 
-  #  Logic App
-  logicAppName: 'la-wus-$(projectName)-$(suffix)'
+  #  Logic App lapp-ais-demo-nonprod
+  logicAppName: 'lapp-ais-demo-$(suffix)'
 
   # API Connections
   officeConnectionName: 'la-wus-$(projectName)-connection-office365'

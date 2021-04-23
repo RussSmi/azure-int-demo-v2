@@ -21,6 +21,7 @@ jobs:
         host.json
         proxies.json
         connections.json
+        Artifacts/**/*
         lareceive-ais-demo-nonprod/**
       TargetFolder: 'project_output'
 
