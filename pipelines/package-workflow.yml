@@ -24,6 +24,12 @@ jobs:
         Artifacts/**/*
         lareceive-ais-demo-nonprod/**
       TargetFolder: 'project_output'
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)/pipelines/scripts'
+      TargetFolder: '$(build.artifactstagingdirectory)/scripts'
+      Contents: '**'
 
   - task: ArchiveFiles@2
     displayName: 'Create project zip'
@@ -40,3 +46,8 @@ jobs:
       targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
       artifact: '$(logicAppCIArtifactName)'
       publishLocation: 'pipeline'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/scripts'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
