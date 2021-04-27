@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage ./get-sb-connection -g resource-group-name -n service-bus-namespace
+# Usage ./get-sb-connection.sh -g resource-group-name -n service-bus-namespace
 while getopts g:n: option
 do
 case "${option}"
