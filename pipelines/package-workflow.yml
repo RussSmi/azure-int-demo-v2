@@ -28,7 +28,7 @@ jobs:
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     inputs:
       SourceFolder: '$(System.DefaultWorkingDirectory)/pipelines/scripts'
-      TargetFolder: '$(build.artifactstagingdirectory)'
+      TargetFolder: '$(build.artifactstagingdirectory)/scripts'
       Contents: '**'
 
   - task: ArchiveFiles@2
@@ -48,6 +48,6 @@ jobs:
       publishLocation: 'pipeline'
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/scripts'
       ArtifactName: 'drop'
       publishLocation: 'Container'
