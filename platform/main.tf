@@ -51,11 +51,11 @@ resource "azurerm_storage_account" "lappv2" {
 }
 
 resource "azurerm_application_insights" "lappv2" {
-  application_type                      = "web"
-    location                              = var.location
-    name                                  = "lappaisdemo${lower(var.environment)}"
-    resource_group_name                   = azurerm_resource_group.lareceive.name
-    tags                                  = var.tags
+  application_type    = "web"
+  location            = var.location
+  name                = "lappaisdemo${lower(var.environment)}"
+  resource_group_name = azurerm_resource_group.lareceive.name
+  tags                = var.tags
 }
 
 resource "azurerm_app_service_plan" "lappv2" {
@@ -74,29 +74,29 @@ resource "azurerm_app_service_plan" "lappv2" {
     size     = "F1"
     tier     = "Free"
   }
- }
+}
 
- resource "azurerm_app_service" "lappv2" {
-   app_service_plan_id               = azurerm_app_service_plan.lappv2.id
-   app_settings                      = {
-        "APPINSIGHTS_INSTRUMENTATIONKEY"           = azurerm_application_insights.lappv2.instrumentation_key
-        "AzureWebJobsStorage"                      = azurerm_storage_account.lappv2.primary_connection_string
-        "FUNCTIONS_EXTENSION_VERSION"              = "~3"
-        "FUNCTIONS_V2_COMPATIBILITY_MODE"          = "true"
-        "FUNCTIONS_WORKER_RUNTIME"                 = "node"
-        "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING" = azurerm_storage_account.lappv2.primary_connection_string
-        "WEBSITE_CONTENTSHARE"                     = "lapp-ais-demo-${lower(var.environment)}5e03ef"
-        "WEBSITE_NODE_DEFAULT_VERSION"             = "~12"
-        "WORKFLOWS_LOCATION_NAME"                  = var.location
-        "WORKFLOWS_RESOURCE_GROUP_NAME"            = azurerm_resource_group.lareceive.name
-        "WORKFLOWS_SUBSCRIPTION_ID"                = data.azurerm_client_config.current.subscription_id
-        "WORKFLOWS_TENANT_ID"                      = data.azurerm_client_config.current.tenant_id
-        "Workflows.WebhookRedirectHostUri"         = ""
-    }
-    enabled                           = true
-    https_only                        = true
-    location                          = var.location
-    name                              = "lapp-ais-demo-${lower(var.environment)}"
-    resource_group_name               = azurerm_resource_group.lareceive.name
-    tags                              = var.tags    
- }
+resource "azurerm_app_service" "lappv2" {
+  app_service_plan_id = azurerm_app_service_plan.lappv2.id
+  app_settings = {
+    "APPINSIGHTS_INSTRUMENTATIONKEY"           = azurerm_application_insights.lappv2.instrumentation_key
+    "AzureWebJobsStorage"                      = azurerm_storage_account.lappv2.primary_connection_string
+    "FUNCTIONS_EXTENSION_VERSION"              = "~3"
+    "FUNCTIONS_V2_COMPATIBILITY_MODE"          = "true"
+    "FUNCTIONS_WORKER_RUNTIME"                 = "node"
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING" = azurerm_storage_account.lappv2.primary_connection_string
+    "WEBSITE_CONTENTSHARE"                     = "lapp-ais-demo-${lower(var.environment)}5e03ef"
+    "WEBSITE_NODE_DEFAULT_VERSION"             = "~12"
+    "WORKFLOWS_LOCATION_NAME"                  = var.location
+    "WORKFLOWS_RESOURCE_GROUP_NAME"            = azurerm_resource_group.lareceive.name
+    "WORKFLOWS_SUBSCRIPTION_ID"                = data.azurerm_client_config.current.subscription_id
+    "WORKFLOWS_TENANT_ID"                      = data.azurerm_client_config.current.tenant_id
+    "Workflows.WebhookRedirectHostUri"         = ""
+  }
+  enabled             = true
+  https_only          = true
+  location            = var.location
+  name                = "lapp-ais-demo-${lower(var.environment)}"
+  resource_group_name = azurerm_resource_group.lareceive.name
+  tags                = var.tags
+}
