@@ -38,4 +38,8 @@ variable "object-ids" {
 variable "environment" {
 }
 
+variable "la-receive-url" {
+  
+}
+
 
