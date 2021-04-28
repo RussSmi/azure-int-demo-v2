@@ -10,14 +10,16 @@ trigger:
     - main
   paths:
     include:    
-    - functions
-    - logicapps
+    - platform    
     - env
     - backend*.hcl
     - '*.tf'      
     exclude:
       - base
       - tfstate
+      - logicapps
+      - functions
+      - notes
 
 
 pool:

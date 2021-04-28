@@ -1,5 +1,20 @@
 trigger:
-- main
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - logicapps
+    exclude:
+      - functions
+      - base
+      - notes
+      - pipelines
+      - platform
+      - tfstate
+      - .gitignore
+      - azure-int-demo-v2.code-workspace
+      - readme.md
 
 pr: none
 
