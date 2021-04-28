@@ -16,6 +16,7 @@ trigger:
       - logicapps
       - notes
       - pipelines
+      - platform
       - tfstate
       - .gitignore
       - azure-int-demo-v2.code-workspace
