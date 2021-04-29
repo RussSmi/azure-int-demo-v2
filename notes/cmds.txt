@@ -38,3 +38,5 @@ az rest -m post --header "Accept=application/json" -u "https://management.azure.
 az servicebus namespace authorization-rule keys list --resource-group rg-uks-ais-demo-sbus-nonprod --namespace-name sbus-ais-demo-nonprod --name RootManageSharedAccessKey --query primaryConnectionString -o tsv
 
 az apim api update --api-id echo-api --resource-group rg-uks-ais-demo-apim-nonprod --service-name apim-ais-demo-nonprod --service-url http://postman-echo.com/get
+
+-g $(lap-receive-rg) -n $(lap-receive-name) -w $(lap-workflow-name)
