@@ -1,6 +1,6 @@
 #!/bin/bash
 # Usage ./get-la-receive-url.sh -g resource-group-name -n logic-app-name -w workflow-name
-while getopts g:n: option
+while getopts g:n:w option
 do
 case "${option}"
 in
