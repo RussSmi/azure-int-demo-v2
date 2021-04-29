@@ -13,3 +13,7 @@ variable "tags" {
 variable "resource_group_name" {
   default = "rg-uks-ais-demo"
 }
+
+variable "la-receive-url" {
+
+}

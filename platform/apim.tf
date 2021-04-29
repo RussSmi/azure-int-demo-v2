@@ -7,7 +7,7 @@ resource "azurerm_api_management_api" "apim" {
   display_name        = "publish"
   name                = "publish"
   api_management_name = data.azurerm_api_management.apim.name
-  resource_group_name = data.azurerm_resource_group.apim.name
+  resource_group_name = data.azurerm_api_management.apim.resource_group_name
   path                = "external"
   revision            = "1"
   service_url         = var.la-receive-url
@@ -30,6 +30,7 @@ resource "azurerm_api_management_api_operation" "apim-post" {
   display_name        = "POST"
   method              = "POST"
   operation_id        = "POST"
+  url_template        = "/"
 
   request {
     query_parameter {

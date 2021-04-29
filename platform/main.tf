@@ -92,6 +92,9 @@ resource "azurerm_app_service" "lappv2" {
     "WORKFLOWS_SUBSCRIPTION_ID"                = data.azurerm_client_config.current.subscription_id
     "WORKFLOWS_TENANT_ID"                      = data.azurerm_client_config.current.tenant_id
     "Workflows.WebhookRedirectHostUri"         = ""
+    "WEBSITE_ENABLE_SYNC_UPDATE_SITE"          = "true"
+    "WEBSITE_RUN_FROM_PACKAGE"                 = "1"
+    "serviceBus-connectionString"              = "SBCONN" 
   }
   enabled             = true
   https_only          = true
