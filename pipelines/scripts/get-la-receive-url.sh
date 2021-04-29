@@ -17,5 +17,5 @@ echo workflow-name=$WFLOW
 LAURL=$(az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/${RG}/providers/Microsoft.Web/sites/${LANAME}/hostruntime/runtime/webhooks/workflow/api/management/workflows/${WFLOW}/triggers/manual/listCallbackUrl?api-version=2018-11-01" --query value -o tsv)
 echo logic-app-url=$LAURL
 
-echo "##vso[task.setvariable variable=lap-receive-url;isOutput=true;]$LAURL"
+echo "##vso[task.setvariable variable=LAPPURL]$LAURL"
 
