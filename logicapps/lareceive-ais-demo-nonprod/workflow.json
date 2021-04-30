@@ -28,7 +28,7 @@
                 "type": "Liquid",
                 "kind": "JsonToJson",
                 "inputs": {
-                    "content": "@triggerBody()",
+                    "content": "@triggerBody()?['content']",
                     "map": {
                         "name": "jsontrans.liquid"
                     }
