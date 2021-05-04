@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "storage" {
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "storage101-ais-demo-${lower(var.environment)}"
+  name                     = "str101aisdemo${lower(var.environment)}"
   resource_group_name      = azurerm_resource_group.storage.name
   location                 = azurerm_resource_group.storage.location
   account_tier             = "Standard"
