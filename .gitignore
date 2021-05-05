@@ -15,3 +15,5 @@ tf.plan
 logicapps/.debug/
 logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
 logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
+logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
+logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.pdb

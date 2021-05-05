@@ -1,0 +1,66 @@
+{
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "For_each": {
+                "type": "Foreach",
+                "foreach": "@triggerOutputs()?['body']",
+                "actions": {
+                    "Compose": {
+                        "type": "Compose",
+                        "inputs": "@triggerOutputs()?['body']",
+                        "runAfter": {}
+                    },
+                    "Create_blob": {
+                        "type": "ApiConnection",
+                        "inputs": {
+                            "host": {
+                                "connection": {
+                                    "referenceName": "azureblob_1"
+                                }
+                            },
+                            "method": "post",
+                            "body": "@outputs('Compose')",
+                            "path": "/datasets/default/files",
+                            "queries": {
+                                "folderPath": "subscriber",
+                                "name": "@{utcNow()}.json",
+                                "queryParametersSingleEncoded": true
+                            }
+                        },
+                        "runAfter": {
+                            "Compose": [
+                                "Succeeded"
+                            ]
+                        },
+                        "runtimeConfiguration": {
+                            "contentTransfer": {
+                                "transferMode": "Chunked"
+                            }
+                        }
+                    }
+                },
+                "runAfter": {}
+            }
+        },
+        "triggers": {
+            "When_messages_are_available_in_Service_Bus_topic": {
+                "type": "ServiceProvider",
+                "inputs": {
+                    "parameters": {
+                        "topicName": "sbtopic-ais-demo-nonprod",
+                        "subscriptionName": "sbsubscription-ais-demo-nonprod"
+                    },
+                    "serviceProviderConfiguration": {
+                        "connectionName": "serviceBus",
+                        "operationId": "receiveTopicMessages",
+                        "serviceProviderId": "/serviceProviders/serviceBus"
+                    }
+                }
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {}
+    },
+    "kind": "Stateful"
+}
