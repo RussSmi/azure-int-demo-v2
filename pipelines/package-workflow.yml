@@ -38,6 +38,7 @@ jobs:
         connections.json
         Artifacts/**/*
         lareceive-ais-demo-nonprod/**
+        lasubs-ais-demo-nonprod/**
       TargetFolder: 'project_output'
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
