@@ -66,7 +66,7 @@
                                 }
                             },
                             "method": "post",
-                            "body": "{\n\"fullname\":\"@{body('Parse_JSON')?['contentData']?['fullName']}\",\n\"devices\":@{body('Parse_JSON')?['contentData']?['devices']},\n\"phone\":@{body('Parse_JSON')?['contentData']?['phone']}\n}",
+                            "body": "{\n\"fullname\":\"@{body('Parse_JSON')?['contentData']?['fullName']}\",\n\"devices\":@{body('Parse_JSON')?['contentData']?['devices']},\n\"phone\":\"@{body('Parse_JSON')?['contentData']?['phone']}\"\n}",
                             "path": "/datasets/default/files",
                             "queries": {
                                 "folderPath": "subscriber",
