@@ -33,17 +33,6 @@
                         "name": "jsontrans.liquid"
                     }
                 },
-                "runAfter": {
-                    "Run_in-line_JavaScript": [
-                        "Succeeded"
-                    ]
-                }
-            },
-            "Run_in-line_JavaScript": {
-                "type": "JavaScriptCode",
-                "inputs": {
-                    "code": "return \"test\";"
-                },
                 "runAfter": {}
             }
         },
