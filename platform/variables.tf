@@ -29,7 +29,7 @@ variable "environment" {
 }
 
 variable "log_analytics_workspace_id" {
-  
+
 }
 
 variable "la-receive-url" {

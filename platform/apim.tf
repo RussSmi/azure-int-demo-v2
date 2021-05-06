@@ -21,6 +21,11 @@ resource "azurerm_api_management_api" "apim" {
     header = "Ocp-Apim-Subscription-Key"
     query  = "subscription-key"
   }
+  lifecycle {
+    ignore_changes = [
+      service_url,
+    ]
+  }
 }
 
 resource "azurerm_api_management_api_operation" "apim-post" {
@@ -78,4 +83,4 @@ resource "azurerm_api_management_api_operation_policy" "apim-post" {
 </policies>
     XML
 
- }
+}

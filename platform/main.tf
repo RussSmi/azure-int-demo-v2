@@ -94,7 +94,7 @@ resource "azurerm_app_service" "lappv2" {
     "Workflows.WebhookRedirectHostUri"         = ""
     "WEBSITE_ENABLE_SYNC_UPDATE_SITE"          = "true"
     "WEBSITE_RUN_FROM_PACKAGE"                 = "1"
-    "serviceBus-connectionString"              = "SBCONN" 
+    "serviceBus-connectionString"              = "SBCONN"
   }
   enabled             = true
   https_only          = true
@@ -102,4 +102,10 @@ resource "azurerm_app_service" "lappv2" {
   name                = "lapp-ais-demo-${lower(var.environment)}"
   resource_group_name = azurerm_resource_group.lareceive.name
   tags                = var.tags
+
+  lifecycle {
+    ignore_changes = [
+      app_settings,
+    ]
+  }
 }

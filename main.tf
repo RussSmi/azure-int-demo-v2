@@ -25,5 +25,5 @@ module "platform" {
   source                     = "./platform"
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.ais.id
   environment                = var.environment
-  la-receive-url = var.la-receive-url
+  la-receive-url             = var.la-receive-url
 }

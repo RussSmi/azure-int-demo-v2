@@ -39,7 +39,7 @@ variable "environment" {
 }
 
 variable "la-receive-url" {
-  
+
 }
 
 

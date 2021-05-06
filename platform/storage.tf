@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "storage" {
   location = var.location
   tags     = var.tags
 
- 
+
 }
 
 resource "azurerm_storage_account" "storage" {
