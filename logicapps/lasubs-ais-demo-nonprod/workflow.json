@@ -6,9 +6,55 @@
                 "type": "Foreach",
                 "foreach": "@triggerOutputs()?['body']",
                 "actions": {
-                    "Compose": {
-                        "type": "Compose",
-                        "inputs": "@triggerOutputs()?['body']",
+                    "Parse_JSON": {
+                        "type": "ParseJson",
+                        "inputs": {
+                            "content": "@items('For_each')",
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "contentData": {
+                                        "type": "object",
+                                        "properties": {
+                                            "fullName": {
+                                                "type": "string"
+                                            },
+                                            "firstNameUpperCase": {
+                                                "type": "string"
+                                            },
+                                            "phoneAreaCode": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "devices": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "contentType": {
+                                        "type": "string"
+                                    },
+                                    "userProperties": {
+                                        "type": "object",
+                                        "properties": {}
+                                    },
+                                    "messageId": {
+                                        "type": "string"
+                                    },
+                                    "scheduledEnqueueTimeUtc": {
+                                        "type": "string"
+                                    },
+                                    "timeToLive": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
                         "runAfter": {}
                     },
                     "Create_blob": {
@@ -20,7 +66,7 @@
                                 }
                             },
                             "method": "post",
-                            "body": "@outputs('Compose')",
+                            "body": "{\n\"fullname\":\"@{body('Parse_JSON')?['contentData']?['fullName']}\",\n\"devices\":@{body('Parse_JSON')?['contentData']?['devices']},\n\"phone\":@{body('Parse_JSON')?['contentData']?['phone']}\n}",
                             "path": "/datasets/default/files",
                             "queries": {
                                 "folderPath": "subscriber",
@@ -29,7 +75,7 @@
                             }
                         },
                         "runAfter": {
-                            "Compose": [
+                            "Parse_JSON": [
                                 "Succeeded"
                             ]
                         },
