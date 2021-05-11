@@ -20,23 +20,7 @@
       },
       "connectionRuntimeUrl": "https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob/7455c89defbd4f198597d2656dff439f/",
       "authentication": {
-        "type": "Raw",
-        "scheme": "Key",
-        "parameter": "@appsetting('azureblob-connectionKey')"
-      }
-    },
-    "azureblob_1": {
-      "api": {
-        "id": "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/azureblob"
-      },
-      "connection": {
-        "id": "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/connections/azureblob-2"
-      },
-      "connectionRuntimeUrl": "https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob/94e591b8217445eb99228e16e5b18c71/",
-      "authentication": {
-        "type": "Raw",
-        "scheme": "Key",
-        "parameter": "@appsetting('azureblob_1-connectionKey')"
+        "type": "ManagedServiceIdentity"
       }
     }
   }
