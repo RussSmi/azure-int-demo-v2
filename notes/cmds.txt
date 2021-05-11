@@ -6,10 +6,7 @@ tf plan -var-file=env/nonprod.tfvars -out=tf.plan
 
 https://github.com/RussSmi/azure-int-demo-v2.git
 
-Create the devops pipeline for the function.
-The function app needs to exist first.
-az functionapp devops-pipeline create --organization-name rusmith --project-name IntegrationDemoV2
-
+Any resoures created in the portal can be imported into terraform e.g.
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_storage_account.lappv2 "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Storage/storageAccounts/lappaisdemononprod"
 /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod
 
@@ -37,6 +34,7 @@ curl -X POST -d 'grant_type=client_credentials&client_id=c58a1717-312e-4710-9d00
 az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01"
 az servicebus namespace authorization-rule keys list --resource-group rg-uks-ais-demo-sbus-nonprod --namespace-name sbus-ais-demo-nonprod --name RootManageSharedAccessKey --query primaryConnectionString -o tsv
 
+Set the service url on apim 
 az apim api update --api-id echo-api --resource-group rg-uks-ais-demo-apim-nonprod --service-name apim-ais-demo-nonprod --service-url http://postman-echo.com/get
 
 -g $(lap-receive-rg) -n $(lap-receive-name) -w $(lap-workflow-name)
