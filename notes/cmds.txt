@@ -40,3 +40,5 @@ az servicebus namespace authorization-rule keys list --resource-group rg-uks-ais
 az apim api update --api-id echo-api --resource-group rg-uks-ais-demo-apim-nonprod --service-name apim-ais-demo-nonprod --service-url http://postman-echo.com/get
 
 -g $(lap-receive-rg) -n $(lap-receive-name) -w $(lap-workflow-name)
+
+<rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />

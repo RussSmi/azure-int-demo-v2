@@ -69,8 +69,7 @@ resource "azurerm_api_management_api_operation_policy" "apim-post" {
         -->
 <policies>
     <inbound>
-        <base />        
-        <rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+        <base />     
     </inbound>
     <backend>
         <base />
