@@ -21,11 +21,11 @@ resource "azurerm_api_management_api" "apim" {
     header = "Ocp-Apim-Subscription-Key"
     query  = "subscription-key"
   }
-  lifecycle {
+  /*lifecycle {
     ignore_changes = [
       service_url,
     ]
-  }
+  }*/
 }
 
 resource "azurerm_api_management_api_operation" "apim-post" {
