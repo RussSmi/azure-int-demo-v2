@@ -10,4 +10,5 @@ esac
 done
 
 SBCONN=$(az servicebus namespace authorization-rule keys list --resource-group $RG --namespace-name $SBNAME --name RootManageSharedAccessKey --query primaryConnectionString -o tsv)
-echo "##vso[task.setvariable variable=SB-CONNECTION-STRING;]SBCONN"
+echo SB-CONNECTION-STRING=$SBCONN
+echo "##vso[task.setvariable variable=SB-CONNECTION-STRING;]$SBCONN"
