@@ -15,3 +15,6 @@ tf.plan
 logicapps/.debug/
 logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
 logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.pdb
+.terraform/providers/registry.terraform.io/hashicorp/azuread/1.2.2/linux_amd64/terraform-provider-azuread_v1.2.2_x5
+.terraform/providers/registry.terraform.io/hashicorp/azurerm/2.58.0/linux_amd64/terraform-provider-azurerm_v2.58.0_x5
+.terraform/providers/registry.terraform.io/hashicorp/random/2.3.1/linux_amd64/terraform-provider-random_v2.3.1_x4
