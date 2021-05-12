@@ -18,7 +18,7 @@ terraform {
 
 data "azurerm_client_config" "current" {}
 resource "azurerm_resource_group" "lareceive" {
-  name     = "${var.resource_group_name}-lav2-receive-${lower(var.environment)}"
+  name     = "${var.resource_group_name}-lappsingleten-${lower(var.environment)}"
   location = var.location
   tags     = var.tags
 
