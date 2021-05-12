@@ -1,44 +1,34 @@
-az login -t 72f988bf-86f1-41af-91ab-2d7cd011db47
-az account set -s ca9ae6cf-2ab2-48d0-981d-c1030fd74a64
+az login -t ************************
+az account set -s *********************
 alias tf=terraform
 tf init -backend-config=backend-nonprod.hcl
 tf plan -var-file=env/nonprod.tfvars -out=tf.plan
 
+Repo is at
 https://github.com/RussSmi/azure-int-demo-v2.git
 
-Create the devops pipeline for the function.
-The function app needs to exist first.
-az functionapp devops-pipeline create --organization-name rusmith --project-name IntegrationDemoV2
+Any resoures created in the portal can be imported into terraform e.g.
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_storage_account.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Storage/storageAccounts/lappaisdemononprod"
+/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod
 
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_storage_account.lappv2 "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Storage/storageAccounts/lappaisdemononprod"
-/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod"
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_application_insights.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/microsoft.insights/components/lappaisdemononprod"
 
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.lappv2 "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod"
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_application_insights.lappv2 "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/microsoft.insights/components/lappaisdemononprod"
+The above commands were used to scrape the settings for the logic app function app
 
-"serviceBus-connectionString": "Endpoint=sb://sbus-ais-demo-nonprod.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=kbo+Ghl4b4dyMKQJTESXvKVzgoVuMS7rzptn1QQZS98="
+"serviceBus-connectionString": "Endpoint=sb://sbus-ais-demo-nonprod.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=*********************************"
 Was missing from deployment
 
-POST to
-https://management.azure.com/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourcegroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01
+Get logic app url:
+az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01"
 
-Testing management api:
-az ad sp create-for-rbac --name azure-int-demo-sp
-{
-  "appId": "c58a1717-312e-4710-9d00-7cd75f0b293f",
-  "displayName": "azure-int-demo-sp",
-  "name": "http://azure-int-demo-sp",
-  "password": "SXCOzd7wN113Lf_mOh8Ly7gKPAEETf6iji",
-  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-}
-
-curl -X POST -d 'grant_type=client_credentials&client_id=c58a1717-312e-4710-9d00-7cd75f0b293f&client_secret=SXCOzd7wN113Lf_mOh8Ly7gKPAEETf6iji&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token
-
-az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/rg-uks-ais-demo-lav2-receive-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01"
+Get service bus key:
 az servicebus namespace authorization-rule keys list --resource-group rg-uks-ais-demo-sbus-nonprod --namespace-name sbus-ais-demo-nonprod --name RootManageSharedAccessKey --query primaryConnectionString -o tsv
 
+Set the service url on apim 
 az apim api update --api-id echo-api --resource-group rg-uks-ais-demo-apim-nonprod --service-name apim-ais-demo-nonprod --service-url http://postman-echo.com/get
 
 -g $(lap-receive-rg) -n $(lap-receive-name) -w $(lap-workflow-name)
 
+For demo, add thorttling to APIM
 <rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />

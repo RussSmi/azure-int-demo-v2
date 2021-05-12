@@ -10,7 +10,7 @@ variables:
 
   # Resource Group
   resourceGroupLocation: 'uksouth'
-  resourceGroupName: 'rg-uks-ais-demo-lav2-receive-$(suffix)'
+  resourceGroupName: 'rg-uks-ais-demo-lappsingleten-$(suffix)'
 
   # Storage
   storageName: 'sa$(projectName)$(suffix)'
