@@ -5,6 +5,7 @@ trigger:
   paths:
     include:
     - logicapps
+    - bicep
     exclude:
       - functions
       - base
@@ -46,6 +47,12 @@ jobs:
       SourceFolder: '$(System.DefaultWorkingDirectory)/pipelines/scripts'
       TargetFolder: '$(build.artifactstagingdirectory)/scripts'
       Contents: '**'
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(System.DefaultWorkingDirectory)/bicep'
+      TargetFolder: '$(build.artifactstagingdirectory)/bicep'
+      Contents: '**'
 
   - task: ArchiveFiles@2
     displayName: 'Create project zip'
@@ -64,6 +71,6 @@ jobs:
       publishLocation: 'pipeline'
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/scripts'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/**'
       ArtifactName: 'drop'
       publishLocation: 'Container'
