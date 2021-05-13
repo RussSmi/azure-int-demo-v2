@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "env": {
+        "value": "nonprod"
+      },
+      "resource_group": {
+        "value": "rg-uks-ais-demo-lappsingleten-nonprod"
+      },
+      "sb_conn_str": {
+        "value": "bicep-placeholder"
+      },
+      "resourceTags": {
+        "value": {
+          "Application": "Azure Integration Services Demo",
+           "Environment": "nonprod", 
+           "Keep": "Yes"
+        }
+      }
+    }
+  }

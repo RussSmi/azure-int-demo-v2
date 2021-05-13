@@ -34,3 +34,5 @@ az apim api update --api-id echo-api --resource-group rg-uks-ais-demo-apim-nonpr
 
 For demo, add thorttling to APIM
 <rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+
+az deployment group create --name singletenant1 --resource-group rg-uks-ais-demo-lappsingleten-nonprod --template-file singletenantappservice.bicep --parameters deploy.nonprod.json
