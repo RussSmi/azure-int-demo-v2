@@ -27,6 +27,7 @@ resource "azurerm_resource_group" "lareceive" {
   }
 }
 
+/*
 resource "azurerm_storage_account" "lappv2" {
   resource_group_name       = azurerm_resource_group.lareceive.name
   account_kind              = "Storage"
@@ -48,7 +49,7 @@ resource "azurerm_storage_account" "lappv2" {
   }
 }
 
-resource "azurerm_application_insights" "lappv2" {
+ resource "azurerm_application_insights" "lappv2" {
   application_type    = "web"
   location            = var.location
   name                = "lappaisdemo${lower(var.environment)}"
@@ -106,4 +107,4 @@ resource "azurerm_app_service" "lappv2" {
       app_settings,
     ]
   }
-}
+} */
