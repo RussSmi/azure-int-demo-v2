@@ -5,7 +5,7 @@ do
 case "${option}"
 in
 g) RG=${OPTARG};;
-n) DEPLOYNAME=${OPTARG};;
+n) DEPLOYPREFIX=${OPTARG};;
 f) BICEPFILE=${OPTARG};;
 p) PARAMFILE=${OPTARG};;
 esac
@@ -18,6 +18,11 @@ chmod +x ./bicep
 
 echo 'Install Bicep for CLI...'
 az bicep install
+
+CURRENT_TIME=$(date "+%Y.%m.%d-%H.%M.%S")
+echo "Current Time : $CURRENT_TIME"
+
+DEPLOY_NAME=$DEPLOYPREFIX.$CURRENT_TIME
 
 echo 'Deploy bicep file...'
 az deployment group create --name $DEPLOYNAME --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
