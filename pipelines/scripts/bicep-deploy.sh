@@ -23,6 +23,7 @@ CURRENT_TIME=$(date "+%Y.%m.%d-%H.%M.%S")
 echo "Current Time : $CURRENT_TIME"
 
 DEPLOY_NAME=$DEPLOYPREFIX.$CURRENT_TIME
+echo "Deploy name : $DEPLOY_NAME"
 
 echo 'Deploy bicep file...'
 az deployment group create --name $DEPLOYNAME --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
