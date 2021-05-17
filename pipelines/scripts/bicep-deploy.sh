@@ -26,6 +26,6 @@ DEPLOY_NAME=$CURRENT_TIME
 echo "Deploy name : $DEPLOY_NAME"
 
 echo 'Deploy bicep file...'
-az deployment group create --name $DEPLOYNAME --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
+az deployment group create --name deploy1hc --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
 
 echo 'Done.'
