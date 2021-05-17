@@ -19,10 +19,10 @@ chmod +x ./bicep
 echo 'Install Bicep for CLI...'
 az bicep install
 
-CURRENT_TIME=$(date "+%Y.%m.%d-%H.%M.%S")
+CURRENT_TIME=$(date "+%Y_%m_%d_%H_%M_%S")
 echo "Current Time : $CURRENT_TIME"
 
-DEPLOY_NAME=$DEPLOYPREFIX.$CURRENT_TIME
+DEPLOY_NAME=$DEPLOYPREFIX_$CURRENT_TIME
 echo "Deploy name : $DEPLOY_NAME"
 
 echo 'Deploy bicep file...'
