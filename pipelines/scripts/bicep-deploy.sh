@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Usage ./get-sb-connection.sh -g resource-group-name -n service-bus-namespace
 while getopts g:n:f:p: option
 do
