@@ -23,10 +23,10 @@ az bicep install
 CURRENT_TIME=$(date "+%Y_%m_%d_%H_%M_%S")
 echo "Current Time : $CURRENT_TIME"
 
-DEPLOY_NAME=$CURRENT_TIME
+DEPLOY_NAME=$DEPLOYPREFIX-$CURRENT_TIME
 echo "Deploy name : $DEPLOY_NAME"
 
 echo 'Deploy bicep file...'
-az deployment group create --name $DEPLOYNAME --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
+az deployment group create --name $DEPLOY_NAME --resource-group $RG --template-file $BICEPFILE --parameters $PARAMFILE
 
 echo 'Done.'
