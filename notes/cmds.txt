@@ -41,3 +41,4 @@ https://str101aisdemononprod.blob.core.windows.net
 https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob/982aa087ef524ae0a04f41395b79768e
 @appsetting('storage-url')
 
+<rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
