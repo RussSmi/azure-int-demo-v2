@@ -104,7 +104,7 @@ resource lappst 'Microsoft.Web/sites@2020-12-01' = {
   }
 }
 
-resource symbolicname 'Microsoft.Web/sites/config@2018-11-01' = {
+resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
   name: 'lapp-ais-demo-nonprod/appsettings'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appIns.properties.InstrumentationKey
@@ -121,5 +121,16 @@ resource symbolicname 'Microsoft.Web/sites/config@2018-11-01' = {
     WEBSITE_ENABLE_SYNC_UPDATE_SITE: 'true'
     WEBSITE_RUN_FROM_PACKAGE: '1'
     'serviceBus-connectionString': sb_conn_str
+    'storage-url': 'https://str101aisdemononprod.blob.core.windows.net/subscriber'
+  }
+}
+
+resource apiconnection 'Microsoft.Web/connections@2015-08-01-preview' = {
+  location: location
+  name: 'bicepblobconnection'
+  kind: 'V2'
+  properties: {
+    name: 'bicepblobconnection'
+    apiDefinitionUrl: '/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/azureblob'
   }
 }
