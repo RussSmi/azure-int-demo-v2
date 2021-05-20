@@ -18,7 +18,7 @@
       "connection": {
         "id": "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/connections/azureblob"
       },
-      "connectionRuntimeUrl": "@appsetting('storage-url')",
+      "connectionRuntimeUrl": "https://str101aisdemononprod.blob.core.windows.net",
       "authentication": {
         "type": "ManagedServiceIdentity"
       }

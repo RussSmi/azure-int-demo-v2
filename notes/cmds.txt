@@ -36,3 +36,8 @@ For demo, add thorttling to APIM
 <rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
 
 az deployment group create --name singletenant1 --resource-group rg-uks-ais-demo-lappsingleten-nonprod --template-file singletenantappservice.bicep --parameters deploy.nonprod.json
+
+https://str101aisdemononprod.blob.core.windows.net
+https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob/982aa087ef524ae0a04f41395b79768e
+@appsetting('storage-url')
+
