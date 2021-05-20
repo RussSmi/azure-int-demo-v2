@@ -124,13 +124,3 @@ resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
     'storage-url': 'https://str101aisdemononprod.blob.core.windows.net/subscriber'
   }
 }
-
-resource apiconnection 'Microsoft.Web/connections@2015-08-01-preview' = {
-  location: location
-  name: 'bicepblobconnection'
-  kind: 'V2'
-  properties: {
-    name: 'bicepblobconnection'
-    apiDefinitionUrl: '/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/azureblob'
-  }
-}

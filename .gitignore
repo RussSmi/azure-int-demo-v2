@@ -20,3 +20,4 @@ logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.pdb
 .terraform/providers/registry.terraform.io/hashicorp/random/2.3.1/linux_amd64/terraform-provider-random_v2.3.1_x4
 bicep/api.json
 bicep/api.bicep
+bicep/output.json
