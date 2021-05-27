@@ -1,4 +1,5 @@
 param env string
+param connections_azureblob_name string = 'azureblob'
 param resource_group string
 param location string = resourceGroup().location
 param sb_conn_str string
@@ -122,5 +123,18 @@ resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
     WEBSITE_RUN_FROM_PACKAGE: '1'
     'serviceBus-connectionString': sb_conn_str
     'storage-url': 'https://str101aisdemononprod.blob.core.windows.net/subscriber'
+  }
+}
+
+resource connections_azureblob_name_resource 'Microsoft.Web/connections@2016-06-01' = {
+  name: connections_azureblob_name
+  location: 'uksouth'
+  kind: 'V2'
+  properties: {
+    displayName: 'manualblobconnection'
+    customParameterValues: {}
+    api: {
+      id: '/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/${connections_azureblob_name}'
+    }
   }
 }
