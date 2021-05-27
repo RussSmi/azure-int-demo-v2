@@ -22,3 +22,4 @@ bicep/api.json
 bicep/api.bicep
 bicep/output.json
 .terraform/providers/registry.terraform.io/hashicorp/azurerm/2.58.0/linux_386/terraform-provider-azurerm_v2.58.0_x5
+logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll

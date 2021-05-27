@@ -22,6 +22,20 @@
       "authentication": {
         "type": "ManagedServiceIdentity"
       }
+    },
+    "azureblob_1": {
+      "api": {
+        "id": "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/azureblob"
+      },
+      "connection": {
+        "id": "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/connections/azureblob-2"
+      },
+      "connectionRuntimeUrl": "https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob/a0698f43a25c460dabce6873473f9825/",
+      "authentication": {
+        "type": "Raw",
+        "scheme": "Key",
+        "parameter": "@appsetting('azureblob_1-connectionKey')"
+      }
     }
   }
 }
