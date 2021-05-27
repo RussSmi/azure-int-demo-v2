@@ -131,7 +131,7 @@ resource connections_azureblob_name_resource 'Microsoft.Web/connections@2016-06-
   location: 'uksouth'
   kind: 'V2'
   properties: {
-    displayName: 'manualblobconnection'
+    displayName: 'bicepblobconnection'
     customParameterValues: {}
     api: {
       id: '/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/providers/Microsoft.Web/locations/uksouth/managedApis/${connections_azureblob_name}'
