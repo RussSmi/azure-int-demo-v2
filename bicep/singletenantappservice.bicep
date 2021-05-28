@@ -3,6 +3,8 @@ param connections_azureblob_name string = 'azureblob'
 param resource_group string
 param location string = resourceGroup().location
 param sb_conn_str string
+param storage_account_name string
+param storage_resource_group_name string
 param resourceTags object = {
   Application: 'Azure Integration Services Demo'
   Environment: 'nonprod'
@@ -105,6 +107,12 @@ resource lappst 'Microsoft.Web/sites@2020-12-01' = {
   }
 }
 
+resource blobstg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
+  name: storage_account_name
+  scope: resourceGroup(storage_resource_group_name)
+}
+
+
 resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
   name: 'lapp-ais-demo-nonprod/appsettings'
   properties: {
@@ -123,6 +131,7 @@ resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
     WEBSITE_RUN_FROM_PACKAGE: '1'
     'serviceBus-connectionString': sb_conn_str
     'storage-url': 'https://str101aisdemononprod.blob.core.windows.net/subscriber'
+    'AzureBlob-connectionString' : 'DefaultEndpointsProtocol=https;AccountName=${blobstg.name};AccountKey=${listKeys(blobstg.id, blobstg .apiVersion).keys[1].value}'
   }
 }
 

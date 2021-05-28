@@ -57,32 +57,28 @@
                         },
                         "runAfter": {}
                     },
-                    "Create_blob": {
-                        "type": "ApiConnection",
+                    "Uploads_a_Blob_to_Azure_Storage": {
+                        "type": "ServiceProvider",
                         "inputs": {
-                            "host": {
-                                "connection": {
-                                    "referenceName": "azureblob_1"
+                            "parameters": {
+                                "containerName": "subscriber",
+                                "blobName": "@{utcNow()}.json",
+                                "content": {
+                                    "fullname": "@{body('Parse_JSON')?['contentData']?['fullName']}",
+                                    "devices": "@body('Parse_JSON')?['contentData']?['devices']",
+                                    "phone": "@{body('Parse_JSON')?['contentData']?['phone']}"
                                 }
                             },
-                            "method": "post",
-                            "body": "{\n\"fullname\":\"@{body('Parse_JSON')?['contentData']?['fullName']}\",\n\"devices\":@{body('Parse_JSON')?['contentData']?['devices']},\n\"phone\":\"@{body('Parse_JSON')?['contentData']?['phone']}\"\n}",
-                            "path": "/datasets/default/files",
-                            "queries": {
-                                "folderPath": "subscriber",
-                                "name": "@{utcNow()}.json",
-                                "queryParametersSingleEncoded": true
+                            "serviceProviderConfiguration": {
+                                "connectionName": "AzureBlob",
+                                "operationId": "uploadBlob",
+                                "serviceProviderId": "/serviceProviders/AzureBlob"
                             }
                         },
                         "runAfter": {
                             "Parse_JSON": [
                                 "Succeeded"
                             ]
-                        },
-                        "runtimeConfiguration": {
-                            "contentTransfer": {
-                                "transferMode": "Chunked"
-                            }
                         }
                     }
                 },

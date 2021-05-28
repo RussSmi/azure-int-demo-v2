@@ -3,24 +3,24 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "env": {
-        "value": "nonprod"
+        "value": "prod"
       },
       "resource_group": {
-        "value": "rg-uks-ais-demo-lappsingleten-nonprod"
+        "value": "rg-uks-ais-demo-lappsingleten-prod"
       },
       "sb_conn_str": {
         "value": "bicep-placeholder"
       },
       "storage_account_name":{
-        "value": "str101aisdemononprod"
+        "value": "str101aisdemoprod"
       },
       "storage_resource_group_name":{
-        "value": "rg-uks-ais-demo-storage-nonprod"
+        "value": "rg-uks-ais-demo-storage-prod"
       },
       "resourceTags": {
         "value": {
           "Application": "Azure Integration Services Demo",
-           "Environment": "nonprod", 
+           "Environment": "prod", 
            "Keep": "Yes"
         }
       }
