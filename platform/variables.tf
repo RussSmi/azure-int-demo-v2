@@ -37,7 +37,7 @@ variable "la-receive-url" {
 }
 
 variable "apim_policies_path" {
-  type = string
+  type    = string
   default = "./platform/apim_policies/"
 }
 
