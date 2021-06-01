@@ -13,7 +13,6 @@ terraform {
     }
   }
   backend "azurerm" {}
-  #required_version = "= 0.14.8"
 }
 
 data "azurerm_log_analytics_workspace" "ais" {
