@@ -42,3 +42,13 @@ https://06b137eff4fe3023.01.common.logic-uksouth.azure-apihub.net/apim/azureblob
 @appsetting('storage-url')
 
 <rate-limit-by-key calls="1" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+
+
+{
+    "content":{
+        "devices":"Surface, Android Phone, Laptop Computer, Monitors",
+        "firstName":"James",
+        "lastName":"Bond",
+        "phone":"07788671474"
+    }
+}
