@@ -1,3 +1,7 @@
+locals {
+  apim_policy_path = format("%s%s", var.apim_policies_path, "apim_policy.xml")
+}
+
 resource "azurerm_resource_group" "apim" {
   name     = "${var.resource_group_name}-apim-${lower(var.environment)}"
   location = var.location
@@ -34,25 +38,7 @@ resource "azurerm_api_management" "apim" {
 
   notification_sender_email = "apimgmt-noreply@mail.windowsazure.com"
   policy {
-    xml_content = <<XML
-                <!--
-                    IMPORTANT:
-                    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
-                    - Only the <forward-request> policy element can appear within the <backend> section element.
-                    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
-                    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
-                    - To add a policy position the cursor at the desired insertion point and click on the round button associated with the policy.
-                    - To remove a policy, delete the corresponding policy statement from the policy document.
-                    - Policies are applied in the order of their appearance, from the top down.
-                -->
-                <policies>
-                        <inbound />
-                        <backend>
-                                <forward-request />
-                        </backend>
-                        <outbound />
-                </policies>
-            XML
+    xml_content = file(local.apim_policy_path)
   }
 
   publisher_email      = "russell.smith@microsoft.com"
