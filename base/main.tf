@@ -12,7 +12,7 @@ terraform {
       version = "~> 1.2.2"
     }
   }
-
+  backend "azurerm" {}
 }
 
 resource "azurerm_resource_group" "base" {
@@ -44,7 +44,8 @@ output "log_analytics_wid" {
 }
 
 output "log_analytics_wkey" {
-  value = azurerm_log_analytics_workspace.log_analytics.primary_shared_key
+  value     = azurerm_log_analytics_workspace.log_analytics.primary_shared_key
+  sensitive = true
 }
 
 data "azurerm_client_config" "current" {
@@ -165,6 +166,12 @@ resource "azurerm_key_vault_access_policy" "current" {
     "Restore",
     "Purge",
   ]
+
+  lifecycle {
+    ignore_changes = [
+      object_id,
+    ]
+  }
 }
 
 resource "azurerm_key_vault_access_policy" "list" {

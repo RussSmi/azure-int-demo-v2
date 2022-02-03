@@ -38,8 +38,10 @@ variable "object-ids" {
 variable "environment" {
 }
 
-variable "la-receive-url" {
-
+variable "apim_policies_path" {
+  type    = string
+  default = "./apim_policies/"
 }
+
 
 
