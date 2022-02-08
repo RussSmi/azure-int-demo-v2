@@ -2,13 +2,24 @@
     "definition": {
         "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
         "actions": {
-            "Send_Message": {
+            "Transform_JSON_To_JSON": {
+                "type": "Liquid",
+                "kind": "JsonToJson",
+                "inputs": {
+                    "content": "@triggerBody()",
+                    "map": {
+                        "name": "jsontrans.liquid"
+                    }
+                },
+                "runAfter": {}
+            },
+            "Send_message": {
                 "type": "ServiceProvider",
                 "inputs": {
                     "parameters": {
                         "entityName": "sbtopic-ais-demo-nonprod",
                         "message": {
-                            "contentData": "@outputs('Transform_JSON_To_JSON')?['body']",
+                            "contentData": "@body('Transform_JSON_To_JSON')",
                             "contentType": "application/json"
                         }
                     },
@@ -23,17 +34,6 @@
                         "Succeeded"
                     ]
                 }
-            },
-            "Transform_JSON_To_JSON": {
-                "type": "Liquid",
-                "kind": "JsonToJson",
-                "inputs": {
-                    "content": "@triggerBody()?['content']",
-                    "map": {
-                        "name": "jsontrans.liquid"
-                    }
-                },
-                "runAfter": {}
             }
         },
         "triggers": {

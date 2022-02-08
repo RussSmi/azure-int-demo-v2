@@ -91,10 +91,10 @@
     }
   ],
   "inputs": [
-    {
-      "id": "getDebugSymbolDll",
-      "type": "command",
-      "command": "azureLogicAppsV2.getDebugSymbolDll"
-    }
-  ]
+		{
+			"id": "getDebugSymbolDll",
+			"type": "command",
+			"command": "azureLogicAppsStandard.getDebugSymbolDll"
+		}
+	]
 }
