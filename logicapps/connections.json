@@ -1,14 +1,5 @@
 {
   "serviceProviderConnections": {
-    "AzureBlob": {
-      "parameterValues": {
-        "connectionString": "@appsetting('AzureBlob-connectionString')"
-      },
-      "serviceProvider": {
-        "id": "/serviceProviders/AzureBlob"
-      },
-      "displayName": "blobconnectionstring"
-    },
     "serviceBus": {
       "parameterValues": {
         "connectionString": "@appsetting('serviceBus_connectionString')"
@@ -17,6 +8,15 @@
         "id": "/serviceProviders/serviceBus"
       },
       "displayName": "sbconn"
+    },
+    "AzureBlob": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureBlob_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "AzureBlob"
     }
   },
   "managedApiConnections": {}

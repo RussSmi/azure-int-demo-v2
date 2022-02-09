@@ -9,48 +9,27 @@
                     "Parse_JSON": {
                         "type": "ParseJson",
                         "inputs": {
-                            "content": "@items('For_each')",
+                            "content": "@item()?['contentData']",
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "contentData": {
-                                        "type": "object",
-                                        "properties": {
-                                            "fullName": {
-                                                "type": "string"
-                                            },
-                                            "firstNameUpperCase": {
-                                                "type": "string"
-                                            },
-                                            "phoneAreaCode": {
-                                                "type": "string"
-                                            },
-                                            "phone": {
-                                                "type": "string"
-                                            },
-                                            "devices": {
-                                                "type": "array",
-                                                "items": {
-                                                    "type": "string"
-                                                }
-                                            }
+                                    "fullName": {
+                                        "type": "string"
+                                    },
+                                    "firstNameUpperCase": {
+                                        "type": "string"
+                                    },
+                                    "phoneAreaCode": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "devices": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
                                         }
-                                    },
-                                    "contentType": {
-                                        "type": "string"
-                                    },
-                                    "userProperties": {
-                                        "type": "object",
-                                        "properties": {}
-                                    },
-                                    "messageId": {
-                                        "type": "string"
-                                    },
-                                    "scheduledEnqueueTimeUtc": {
-                                        "type": "string"
-                                    },
-                                    "timeToLive": {
-                                        "type": "string"
                                     }
                                 }
                             }
@@ -64,9 +43,9 @@
                                 "containerName": "subscriber",
                                 "blobName": "@{utcNow()}.json",
                                 "content": {
-                                    "fullname": "@{body('Parse_JSON')?['contentData']?['fullName']}",
-                                    "devices": "@body('Parse_JSON')?['contentData']?['devices']",
-                                    "phone": "@{body('Parse_JSON')?['contentData']?['phone']}"
+                                    "Full Name": "@body('Parse_JSON')?['fullName']",
+                                    "Phone Number": "@body('Parse_JSON')?['phone']",
+                                    "Devices": "@body('Parse_JSON')?['devices']"
                                 }
                             },
                             "serviceProviderConfiguration": {
@@ -86,7 +65,7 @@
             }
         },
         "triggers": {
-            "When_messages_are_available_in_Service_Bus_topic": {
+            "When_messages_are_available_in_a_topic_subscription": {
                 "type": "ServiceProvider",
                 "inputs": {
                     "parameters": {

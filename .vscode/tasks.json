@@ -84,17 +84,16 @@
       "command": "host start",
       "problemMatcher": "$func-watch",
       "isBackground": true,
-      "dependsOn": "generateDebugSymbols",
       "options": {
         "cwd": "${workspaceFolder}/logicapps"
       }
     }
   ],
   "inputs": [
-		{
-			"id": "getDebugSymbolDll",
-			"type": "command",
-			"command": "azureLogicAppsStandard.getDebugSymbolDll"
-		}
-	]
+    {
+      "id": "getDebugSymbolDll",
+      "type": "command",
+      "command": "azureLogicAppsStandard.getDebugSymbolDll"
+    }
+  ]
 }
