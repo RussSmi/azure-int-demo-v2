@@ -72,12 +72,10 @@ The most important part of the demo is to show the CI/CD process.  A throttling 
 ### Sample Message
 ```json
 {
-    "content":{
-        "devices":"Surface, Android Phone, Laptop Computer, Monitors",
-        "firstName":"Asda",
-        "lastName":"API-Demo3",
-        "phone":"07788671474"
-    }
+    "devices":"Surface, Android Phone, Laptop Computer, Monitors",
+    "firstName":"Russ",
+    "lastName":"Smith",
+    "phone":"0123456789"
 }
 ```
     

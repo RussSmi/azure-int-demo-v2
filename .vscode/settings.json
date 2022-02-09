@@ -3,7 +3,7 @@
         "/tfstate",
         "/base"
     ],
-    "azureLogicAppsStandard.deploySubpath": ".",
+    "azureLogicAppsStandard.deploySubpath": "logicapps",
     "azureLogicAppsStandard.projectLanguage": "JavaScript",
     "azureLogicAppsStandard.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",

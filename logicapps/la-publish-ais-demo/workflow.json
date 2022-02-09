@@ -34,6 +34,32 @@
                         "Succeeded"
                     ]
                 }
+            },
+            "Response": {
+                "type": "Response",
+                "kind": "http",
+                "inputs": {
+                    "statusCode": 200,
+                    "body": "Successfully sent the follwoing content to Service Bus:\n@{body('Transform_JSON_To_JSON')}"
+                },
+                "runAfter": {
+                    "Send_message": [
+                        "Succeeded"
+                    ]
+                }
+            },
+            "Response_2": {
+                "type": "Response",
+                "kind": "http",
+                "inputs": {
+                    "statusCode": 500,
+                    "body": "Failed to send message to service bus, content was:\n@{body('Transform_JSON_To_JSON')}"
+                },
+                "runAfter": {
+                    "Send_message": [
+                        "FAILED"
+                    ]
+                }
             }
         },
         "triggers": {
@@ -44,22 +70,17 @@
                     "schema": {
                         "type": "object",
                         "properties": {
-                            "content": {
-                                "type": "object",
-                                "properties": {
-                                    "devices": {
-                                        "type": "string"
-                                    },
-                                    "firstName": {
-                                        "type": "string"
-                                    },
-                                    "lastName": {
-                                        "type": "string"
-                                    },
-                                    "phone": {
-                                        "type": "string"
-                                    }
-                                }
+                            "devices": {
+                                "type": "string"
+                            },
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "phone": {
+                                "type": "string"
                             }
                         }
                     }
