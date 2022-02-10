@@ -1,5 +1,4 @@
 param env string
-param connections_azureblob_name string = 'azureblob'
 param resource_group string
 param location string = resourceGroup().location
 param sb_conn_str string
@@ -36,7 +35,6 @@ resource strg 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   }
   sku: {
     name: 'Standard_LRS'
-    tier: 'Standard'
   }
   kind: 'Storage'
   properties: {
@@ -117,10 +115,9 @@ resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
   name: 'lapp-ais-demo-nonprod/appsettings'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appIns.properties.InstrumentationKey
-    AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value}'
+    AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage};'
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value}'
     FUNCTIONS_EXTENSION_VERSION: '~3'
-    FUNCTIONS_V2_COMPATIBILITY_MODE: 'true'
     FUNCTIONS_WORKER_RUNTIME: 'node'
     WEBSITE_CONTENTSHARE: 'lapp-ais-demo-${env}5e03ef'
     WEBSITE_NODE_DEFAULT_VERSION: '~12'
@@ -129,8 +126,7 @@ resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
     'Workflows.WebhookRedirectHostUri': ''
     WEBSITE_ENABLE_SYNC_UPDATE_SITE: 'true'
     WEBSITE_RUN_FROM_PACKAGE: '1'
-    'serviceBus-connectionString': sb_conn_str
-    'storage-url': 'https://str101aisdemononprod.blob.core.windows.net/subscriber'
-    'AzureBlob-connectionString' : 'DefaultEndpointsProtocol=https;AccountName=${blobstg.name};AccountKey=${listKeys(blobstg.id, blobstg .apiVersion).keys[1].value}'
+    'serviceBus_connectionString': sb_conn_str
+    'AzureBlob_connectionString' : 'DefaultEndpointsProtocol=https;AccountName=${blobstg.name};AccountKey=${listKeys(blobstg.id, blobstg .apiVersion).keys[1].value}'
   }
 }
