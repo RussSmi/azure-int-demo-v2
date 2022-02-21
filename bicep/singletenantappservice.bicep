@@ -64,7 +64,7 @@ resource strg 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   }
 }
 
-resource plan 'Microsoft.Web/serverfarms@2018-02-01' = {
+resource plan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: 'lappst-plan-ais-demo-${env}'
   location: location
   tags: {
@@ -73,11 +73,11 @@ resource plan 'Microsoft.Web/serverfarms@2018-02-01' = {
     Keep: 'Yes'
   }
   sku: {
-    name: 'F1'
-    tier: 'Free'
-    size: 'F1'
-    family: 'F'
-    capacity: 0
+    name: 'WS1'
+    tier: 'WorkflowStandard'
+    size: 'WS1'
+    family: 'WS'
+    capacity: 1
   }
   kind: 'app'
   properties: {
