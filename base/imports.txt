@@ -1,0 +1,26 @@
+│ Error: A resource with the ID "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-apim-prod" already exists - to be managed via Terraform this resource needs to be imported into the State. Please see the resource documentation for "azurerm_resource_group" for more information.
+│ 
+│   with azurerm_resource_group.apim,
+│   on apim-service.tf line 5, in resource "azurerm_resource_group" "apim":
+│    5: resource "azurerm_resource_group" "apim" {
+│ 
+╵terraform import azurerm_resource_group.example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example
+ ON THIS PAGE
+Example Usage
+Arguments Reference
+Attributes Reference
+Timeouts
+Import
+
+
+tf import azurerm_resource_group.apim /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-apim-prod 
+tf import  azurerm_application_insights.apim /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-apim-prod/providers/microsoft.insights/components/apimappinsightsprod
+tf import azurerm_api_management.apim /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-apim-prod/providers/Microsoft.ApiManagement/service/apim-ais-demo-prod
+tf import  azurerm_resource_group.base /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-base-prod
+tf import  azurerm_log_analytics_workspace.log_analytics /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-base-prod/providers/Microsoft.OperationalInsights/workspaces/Default-LogAnalytics-prod
+tf import  azurerm_key_vault.keyvault /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-base-prod/providers/Microsoft.KeyVault/vaults/kvaissharedprod
+
+tf import azurerm_monitor_diagnostic_setting.keyvault /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourcegroups/rg-uks-ais-demo-base-prod/providers/microsoft.keyvault/vaults/kvaissharedprod/providers/microsoft.insights/diagnosticSettings/kvaissharedprod-diags
+tf import  azurerm_key_vault_access_policy.list["2933b5e7-efa0-49d3-9963-0a8a33ec2da2"] /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-base-prod/providers/Microsoft.KeyVault/vaults/kvaissharedprod/objectId/2933b5e7-efa0-49d3-9963-0a8a33ec2da2
+tf import azurerm_key_vault_access_policy.list["96b43a71-7601-4719-9235-eff0b530b157"] /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-ais-demo-base-prod/providers/Microsoft.KeyVault/vaults/kvaissharedprod/objectId/96b43a71-7601-4719-9235-eff0b530b157
+tf import azurerm_monitor_diagnostic_setting.keyvault /subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourcegroups/rg-uks-ais-demo-base-prod/providers/microsoft.keyvault/vaults/kvaissharedprod/providers/microsoft.insights/diagnosticSettings/kvaissharedprod-diags
