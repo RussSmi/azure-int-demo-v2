@@ -6,7 +6,7 @@ param storage_account_name string
 param storage_resource_group_name string
 param resourceTags object = {
   Application: 'Azure Integration Services Demo'
-  Environment: 'nonprod'
+  Environment: env
   Keep: 'Yes'
 }
 
@@ -30,7 +30,7 @@ resource strg 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   location: 'uksouth'
   tags: {
     Application: 'Azure Integration Services Demo'
-    Environment: 'nonprod'
+    Environment: env
     Keep: 'Yes'
   }
   sku: {
@@ -69,7 +69,7 @@ resource plan 'Microsoft.Web/serverfarms@2018-02-01' = {
   location: location
   tags: {
     Application: 'Azure Integration Services Demo'
-    Environment: 'nonprod'
+    Environment: env
     Keep: 'Yes'
   }
   sku: {
@@ -93,7 +93,7 @@ resource plan 'Microsoft.Web/serverfarms@2018-02-01' = {
 }
 
 resource lappst 'Microsoft.Web/sites@2020-12-01' = {
-  name: 'lapp-ais-demo-nonprod'  // must be globally unique
+  name: 'lapp-ais-demo-${env}'  // must be globally unique
   location: 'uksouth' 
   kind: 'functionapp,workflowapp'
   identity:{
@@ -112,7 +112,7 @@ resource blobstg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 
 
 resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
-  name: 'lapp-ais-demo-nonprod/appsettings'
+  name: 'lapp-ais-demo-${env}/appsettings'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appIns.properties.InstrumentationKey
     AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage};'
