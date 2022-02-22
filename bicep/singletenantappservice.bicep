@@ -27,7 +27,7 @@ resource appIns 'microsoft.insights/components@2020-02-02-preview' = {
 
 resource strg 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   name: 'laaisdemostrg${env}'
-  location: 'uksouth'
+  location: location
   tags: {
     Application: 'Azure Integration Services Demo'
     Environment: env
@@ -94,7 +94,7 @@ resource plan 'Microsoft.Web/serverfarms@2021-03-01' = {
 
 resource lappst 'Microsoft.Web/sites@2020-12-01' = {
   name: 'lapp-ais-demo-${env}'  // must be globally unique
-  location: 'uksouth' 
+  location: location
   kind: 'functionapp,workflowapp'
   identity:{
     type:'SystemAssigned'
