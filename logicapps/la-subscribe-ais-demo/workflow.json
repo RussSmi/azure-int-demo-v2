@@ -70,7 +70,7 @@
                 "inputs": {
                     "parameters": {
                         "topicName": "sbtopic-ais-demo",
-                        "subscriptionName": "sbsubscription-ais-demo-nonprod"
+                        "subscriptionName": "sbsubscription-ais-demo"
                     },
                     "serviceProviderConfiguration": {
                         "connectionName": "serviceBus",
