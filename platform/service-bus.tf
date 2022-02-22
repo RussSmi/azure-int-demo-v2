@@ -23,7 +23,7 @@ resource "azurerm_servicebus_namespace" "sbus" {
 }
 
 resource "azurerm_servicebus_topic" "sbus" {
-  name                = "sbtopic-ais-demo-${lower(var.environment)}"
+  name                = "sbtopic-ais-demo"
   resource_group_name = azurerm_resource_group.sbus.name
   namespace_name      = azurerm_servicebus_namespace.sbus.name
 
@@ -31,7 +31,7 @@ resource "azurerm_servicebus_topic" "sbus" {
 }
 
 resource "azurerm_servicebus_subscription" "sbus" {
-  name                = "sbsubscription-ais-demo-${lower(var.environment)}"
+  name                = "sbsubscription-ais-demo"
   resource_group_name = azurerm_resource_group.sbus.name
   namespace_name      = azurerm_servicebus_namespace.sbus.name
   topic_name          = azurerm_servicebus_topic.sbus.name

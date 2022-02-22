@@ -17,7 +17,7 @@
                 "type": "ServiceProvider",
                 "inputs": {
                     "parameters": {
-                        "entityName": "sbtopic-ais-demo-nonprod",
+                        "entityName": "sbtopic-ais-demo",
                         "message": {
                             "contentData": "@body('Transform_JSON_To_JSON')",
                             "contentType": "application/json"

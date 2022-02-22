@@ -69,7 +69,7 @@
                 "type": "ServiceProvider",
                 "inputs": {
                     "parameters": {
-                        "topicName": "sbtopic-ais-demo-nonprod",
+                        "topicName": "sbtopic-ais-demo",
                         "subscriptionName": "sbsubscription-ais-demo-nonprod"
                     },
                     "serviceProviderConfiguration": {
