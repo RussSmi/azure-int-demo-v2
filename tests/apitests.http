@@ -32,3 +32,16 @@ Content-Type:application/json
     "lastName":"Of Vengeburg",
     "phone":"07788671474"
 }
+
+###
+POST https://apim-ais-demo-prod.azure-api.net/external/ HTTP/1.1
+Content-Type:application/json
+Ocp-Apim-Subscription-Key:ee32ad64ebf54d3bb9d15d8a5ac06de5
+Ocp-Apim-Trace:true
+
+{
+    "devices":"Surface, Android Phone, Laptop Computer, Monitors",
+    "firstName":"Jaskier",
+    "lastName":"Bard",
+    "phone":"07788671474"
+}
