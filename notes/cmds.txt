@@ -14,8 +14,8 @@ tf import -var-file=env/nonprod.tfvars module.platform.azurerm_storage_account.l
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod"
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_application_insights.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/microsoft.insights/components/lappaisdemononprod"
 
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.temp "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/sites/rs-logicappstest-v2"
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service_plan.temp "/subscriptions/ca9ae6cf-2ab2-48d0-981d-c1030fd74a64/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/serverFarms/rslogicappstestv2"
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.temp "/subscriptions/<azure-subscription/>/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/sites/rs-logicappstest-v2"
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service_plan.temp "/subscriptions/<azure-subscription/>/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/serverFarms/rslogicappstestv2"
 The above commands were used to scrape the settings for the logic app function app
 
 "serviceBus-connectionString": "Endpoint=sb://sbus-ais-demo-nonprod.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=*********************************"
