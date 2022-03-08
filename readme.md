@@ -5,7 +5,7 @@ This repo contains a full azure integration services demo based on a Microsoft r
 
 ## Architecture
 The implemented process follows the reference integration architecture found here:
-https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/enterprise-integration/queues-eventshttps://docs.microsoft.com/en-us/azure/architecture/reference-architectures/enterprise-integration/queues-events
+https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/enterprise-integration/queues-events
 
 <img src="_imgs/event_arch.png" alt="Event Driven Architecture"/>
 <br/>
