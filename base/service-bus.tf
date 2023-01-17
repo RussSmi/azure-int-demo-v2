@@ -24,16 +24,16 @@ resource "azurerm_servicebus_namespace" "sbus" {
 
 resource "azurerm_servicebus_topic" "sbus" {
   name                = "sbtopic-ais-demo"
-  resource_group_name = azurerm_resource_group.sbus.name
-  namespace_name      = azurerm_servicebus_namespace.sbus.name
+  //resource_group_name = azurerm_resource_group.sbus.name
+  namespace_id      = azurerm_servicebus_namespace.sbus.id
 
   enable_partitioning = true
 }
 
 resource "azurerm_servicebus_subscription" "sbus" {
   name                = "sbsubscription-ais-demo"
-  resource_group_name = azurerm_resource_group.sbus.name
-  namespace_name      = azurerm_servicebus_namespace.sbus.name
-  topic_name          = azurerm_servicebus_topic.sbus.name
+  //resource_group_name = azurerm_resource_group.sbus.name
+  //namespace_id      = azurerm_servicebus_namespace.sbus.id
+  topic_id          = azurerm_servicebus_topic.sbus.id
   max_delivery_count  = 1
 }

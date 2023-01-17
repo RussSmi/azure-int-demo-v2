@@ -14,7 +14,7 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "GRS"
   account_kind             = "StorageV2"
   is_hns_enabled           = "true"
-  allow_blob_public_access = "true"
+  //allow_blob_public_access = "true"
 }
 
 resource "azurerm_storage_container" "storage" {
