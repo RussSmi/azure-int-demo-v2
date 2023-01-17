@@ -29,5 +29,6 @@ logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
 __blobstorage__/
 __queuestorage__/
 __azurite*.json
-
 logicapps/.debug/Microsoft.Azure.Workflows.Debug.Symbols.dll
+tests/apitests.http
+tests/*.http

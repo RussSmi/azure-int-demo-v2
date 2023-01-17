@@ -1,13 +1,13 @@
 ###
 POST https://apim-ais-demo-nonprod.azure-api.net/external/ HTTP/1.1
 Content-Type:application/json
-Ocp-Apim-Subscription-Key:<apim-sub-key goes here/>
+Ocp-Apim-Subscription-Key:bdee4196bd8940228bfc1b1a65910fd6
 Ocp-Apim-Trace:true
 
 {
     "devices":"Surface, Android Phone, Laptop Computer, Monitors",
-    "firstName":"Geralt",
-    "lastName":"Of Riviera",
+    "firstName":"Scott",
+    "lastName":"Wilocx",
     "phone":"07788671474"
 }
 
