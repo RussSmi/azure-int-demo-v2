@@ -1,7 +1,7 @@
 variable "rgname" {
   type        = string
   description = "The base resource group name, change this for a new environment"
-  default     = "rg-uks-ais-demo-tfstate"
+  default     = "rg-tfstate-uks"
 }
 
 variable "location" {
