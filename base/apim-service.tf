@@ -32,7 +32,7 @@ resource "azurerm_application_insights" "apim" {
 }
 
 resource "azurerm_api_management" "apim" {
-  name                = "apim-ais-demo-${lower(var.environment)}"
+  name                = "apim-aisdemo-${lower(var.environment)}"
   location            = var.location
   resource_group_name = azurerm_resource_group.apim.name
 
