@@ -51,14 +51,6 @@ resource "azurerm_api_management" "apim" {
     type = "SystemAssigned"
   }
 
-  hostname_configuration {
-    proxy {
-      default_ssl_binding          = true
-      host_name                    = "apim-ais-demo-${lower(var.environment)}.azure-api.net"
-      negotiate_client_certificate = true
-    }
-  }
-
   lifecycle {
     ignore_changes = [
       tags, policy.0.xml_content, hostname_configuration,

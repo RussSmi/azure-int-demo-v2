@@ -12,7 +12,7 @@ resource "azurerm_resource_group" "sbus" {
 
 
 resource "azurerm_servicebus_namespace" "sbus" {
-  name                = "sbus-ais-demo-${lower(var.environment)}"
+  name                = "sbus-aisdemo-${lower(var.environment)}"
   location            = azurerm_resource_group.sbus.location
   resource_group_name = azurerm_resource_group.sbus.name
   sku                 = "Standard"
@@ -23,17 +23,17 @@ resource "azurerm_servicebus_namespace" "sbus" {
 }
 
 resource "azurerm_servicebus_topic" "sbus" {
-  name                = "sbtopic-ais-demo"
+  name = "sbtopic-ais-demo"
   //resource_group_name = azurerm_resource_group.sbus.name
-  namespace_id      = azurerm_servicebus_namespace.sbus.id
+  namespace_id = azurerm_servicebus_namespace.sbus.id
 
   enable_partitioning = true
 }
 
 resource "azurerm_servicebus_subscription" "sbus" {
-  name                = "sbsubscription-ais-demo"
+  name = "sbsubscription-ais-demo"
   //resource_group_name = azurerm_resource_group.sbus.name
   //namespace_id      = azurerm_servicebus_namespace.sbus.id
-  topic_id          = azurerm_servicebus_topic.sbus.id
-  max_delivery_count  = 1
+  topic_id           = azurerm_servicebus_topic.sbus.id
+  max_delivery_count = 1
 }

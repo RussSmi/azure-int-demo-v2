@@ -1,2 +1,2 @@
-environment    = "prod"
-tags           = { Application = "Azure Integration Services Demo", Environment = "prod", Keep = "Yes" }
+environment = "prod"
+tags        = { Application = "Azure Integration Services Demo", Environment = "prod", Keep = "Yes" }
