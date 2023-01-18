@@ -2,7 +2,7 @@ locals {
     apim_post_op_policy_path = format("%s%s", var.apim_policies_path, "op_post_policy.xml")
 }
 data "azurerm_api_management" "apim" {
-  name                = "apim-ais-demo-${lower(var.environment)}"
+  name                = "apim-aisdemo-${lower(var.environment)}"
   resource_group_name = "${var.resource_group_name}-apim-${lower(var.environment)}"
 }
 
