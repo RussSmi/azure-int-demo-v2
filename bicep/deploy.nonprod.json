@@ -12,7 +12,7 @@
         "value": "bicep-placeholder"
       },
       "storage_account_name":{
-        "value": "str101aisdemononprod"
+        "value": "str102aisdemononprod"
       },
       "storage_resource_group_name":{
         "value": "rg-uks-ais-demo-storage-nonprod"

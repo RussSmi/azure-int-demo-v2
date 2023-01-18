@@ -26,7 +26,7 @@ resource appIns 'microsoft.insights/components@2020-02-02-preview' = {
 }
 
 resource strg 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: 'laaisdemostrg${env}'
+  name: 'laaisdemostrg2${env}'
   location: location
   tags: {
     Application: 'Azure Integration Services Demo'
