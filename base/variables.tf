@@ -31,7 +31,7 @@ variable "keysecrets" {
 
 variable "object-ids" {
   type    = list(any)
-  default = ["96b43a71-7601-4719-9235-eff0b530b157", "2933b5e7-efa0-49d3-9963-0a8a33ec2da2", "7f36b222-2faa-490a-85d2-77f2ee8000a3"] #Put any object ids that need key vault access here
+  default = ["7f36b222-2faa-490a-85d2-77f2ee8000a3", "d74352c2-e9d9-4087-9baf-be409def0951"] #Put any object ids that need key vault access here
 }
 
 # The following variables must  be set each time
