@@ -93,7 +93,7 @@ resource plan 'Microsoft.Web/serverfarms@2021-03-01' = {
 }
 
 resource lappst 'Microsoft.Web/sites@2020-12-01' = {
-  name: 'lapp-ais-demo-${env}'  // must be globally unique
+  name: 'lapp-aisdemo-${env}'  // must be globally unique
   location: location
   kind: 'functionapp,workflowapp'
   identity:{
@@ -112,14 +112,14 @@ resource blobstg 'Microsoft.Storage/storageAccounts@2019-06-01' existing = {
 
 
 resource appconfig 'Microsoft.Web/sites/config@2018-11-01' = {
-  name: 'lapp-ais-demo-${env}/appsettings'
+  name: 'lapp-aisdemo-${env}/appsettings'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appIns.properties.InstrumentationKey
     AzureWebJobsStorage: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value};EndpointSuffix=${environment().suffixes.storage};'
     WEBSITE_CONTENTAZUREFILECONNECTIONSTRING: 'DefaultEndpointsProtocol=https;AccountName=${strg.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(strg.id, strg.apiVersion).keys[0].value}'
     FUNCTIONS_EXTENSION_VERSION: '~3'
     FUNCTIONS_WORKER_RUNTIME: 'node'
-    WEBSITE_CONTENTSHARE: 'lapp-ais-demo-${env}5e03ef'
+    WEBSITE_CONTENTSHARE: 'lapp-aisdemo-${env}5e03ef'
     WEBSITE_NODE_DEFAULT_VERSION: '~12'
     WORKFLOWS_LOCATION_NAME: location
     WORKFLOWS_RESOURCE_GROUP_NAME: resource_group

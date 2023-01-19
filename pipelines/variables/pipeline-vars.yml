@@ -16,8 +16,8 @@ variables:
   storageName: 'sa$(projectName)$(suffix)'
   appServicePlanName: 'asp$(projectName)$(suffix)'
 
-  #  Logic App lapp-ais-demo-nonprod
-  logicAppName: 'lapp-ais-demo-$(suffix)'
+  #  Logic App lapp-aisdemo-nonprod
+  logicAppName: 'lapp-aisdemo-$(suffix)'
 
   # API Connections
   officeConnectionName: 'la-wus-$(projectName)-connection-office365'

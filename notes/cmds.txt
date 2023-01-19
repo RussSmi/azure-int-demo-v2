@@ -9,9 +9,9 @@ https://github.com/RussSmi/azure-int-demo-v2.git
 
 Any resoures created in the portal can be imported into terraform e.g.
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_storage_account.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Storage/storageAccounts/lappaisdemononprod"
-/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod
+/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-aisdemo-nonprod
 
-tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod"
+tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-aisdemo-nonprod"
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_application_insights.lappv2 "/subscriptions/**************************/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/microsoft.insights/components/lappaisdemononprod"
 
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.temp "/subscriptions/<azure-subscription/>/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/sites/rs-logicappstest-v2"
@@ -22,7 +22,7 @@ The above commands were used to scrape the settings for the logic app function a
 Was missing from deployment
 
 Get logic app url:
-az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-ais-demo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01"
+az rest -m post --header "Accept=application/json" -u "https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/sites/lapp-aisdemo-nonprod/hostruntime/runtime/webhooks/workflow/api/management/workflows/lareceive-ais-demo-nonprod/triggers/manual/listCallbackUrl?api-version=2018-11-01"
 
 Get service bus key:
 az servicebus namespace authorization-rule keys list --resource-group rg-uks-ais-demo-sbus-nonprod --namespace-name sbus-ais-demo-nonprod --name RootManageSharedAccessKey --query primaryConnectionString -o tsv
