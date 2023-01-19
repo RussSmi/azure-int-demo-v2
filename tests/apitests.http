@@ -1,7 +1,7 @@
 ###
-POST https://apim-ais-demo-nonprod.azure-api.net/external/ HTTP/1.1
+POST https://apim-aisdemo-nonprod.azure-api.net/external/ HTTP/1.1
 Content-Type:application/json
-Ocp-Apim-Subscription-Key:bdee4196bd8940228bfc1b1a65910fd6
+Ocp-Apim-Subscription-Key:abfb8a22b4564c9b8313d13f8ac3b222
 Ocp-Apim-Trace:true
 
 {
