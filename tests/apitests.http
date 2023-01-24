@@ -6,8 +6,8 @@ Ocp-Apim-Trace:true
 
 {
     "devices":"Surface, Android Phone, Laptop Computer, Monitors",
-    "firstName":"Scott",
-    "lastName":"Wilocx",
+    "firstName":"Slarty",
+    "lastName":"Bartfast",
     "phone":"07788671474"
 }
 
@@ -34,9 +34,9 @@ Content-Type:application/json
 }
 
 ###
-POST https://apim-ais-demo-prod.azure-api.net/external/ HTTP/1.1
+POST https://apim-aisdemo-prod.azure-api.net/external/ HTTP/1.1
 Content-Type:application/json
-Ocp-Apim-Subscription-Key:<apim-sub-key goes here/>
+Ocp-Apim-Subscription-Key:150d6c20e13a4b4483efc5a14eff4888
 Ocp-Apim-Trace:true
 
 {

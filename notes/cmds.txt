@@ -18,6 +18,9 @@ tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service.temp 
 tf import -var-file=env/nonprod.tfvars module.platform.azurerm_app_service_plan.temp "/subscriptions/<azure-subscription/>/resourceGroups/rg-uks-la-v2-logicappstest/providers/Microsoft.Web/serverFarms/rslogicappstestv2"
 The above commands were used to scrape the settings for the logic app function app
 
+tf import -var-file=prod.tfvars azurerm_api_management.apim "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-apim-prod/providers/Microsoft.ApiManagement/service/apim-aisdemo-prod"
+
+
 "serviceBus-connectionString": "Endpoint=sb://sbus-ais-demo-nonprod.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=*********************************"
 Was missing from deployment
 
