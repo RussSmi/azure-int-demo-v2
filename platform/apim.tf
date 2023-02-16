@@ -60,3 +60,29 @@ resource "azurerm_api_management_api_operation_policy" "apim-post" {
   xml_content = file(local.apim_post_op_policy_path)
 
 }
+
+data "azurerm_api_management_product" "prod-free" {
+  product_id          = "free-product"
+  api_management_name = data.azurerm_api_management.apim.name
+  resource_group_name = data.azurerm_api_management.apim.resource_group_name
+}
+
+data "azurerm_api_management_product" "prod-pay" {
+  product_id          = "pay-product"
+  api_management_name = data.azurerm_api_management.apim.name
+  resource_group_name = data.azurerm_api_management.apim.resource_group_name
+}
+
+resource "azurerm_api_management_product_api" "api-free" {
+  api_name            = azurerm_api_management_api.apim.name
+  product_id          = data.azurerm_api_management_product.prod-free.product_id
+  api_management_name = data.azurerm_api_management.apim.name
+  resource_group_name = data.azurerm_api_management.apim.resource_group_name
+}
+
+resource "azurerm_api_management_product_api" "api-pay" {
+  api_name            = azurerm_api_management_api.apim.name
+  product_id          = data.azurerm_api_management_product.prod-pay.product_id
+  api_management_name = data.azurerm_api_management.apim.name
+  resource_group_name = data.azurerm_api_management.apim.resource_group_name
+}

@@ -57,3 +57,53 @@ resource "azurerm_api_management" "apim" {
     ]
   }
 }
+
+resource "azurerm_api_management_group" "apim-devs" {
+  name                = "api-devs"
+  resource_group_name = azurerm_resource_group.apim.name
+  api_management_name = azurerm_api_management.apim.name
+  display_name        = "API Developers Group"
+  description         = "This is an example API management group for API developers."
+}
+
+resource "azurerm_api_management_group" "apim-external" {
+  name                = "api-external"
+  resource_group_name = azurerm_resource_group.apim.name
+  api_management_name = azurerm_api_management.apim.name
+  display_name        = "API External Group"
+  description         = "This is an example API management group for API external callers."
+}
+
+resource "azurerm_api_management_product" "prod-free" {
+  product_id            = "free-product"
+  api_management_name   = azurerm_api_management.apim.name
+  resource_group_name   = azurerm_resource_group.apim.name
+  display_name          = "Free Product"
+  subscription_required = false
+  approval_required     = false
+  published             = true
+}
+
+resource "azurerm_api_management_product" "prod-pay" {
+  product_id            = "pay-product"
+  api_management_name   = azurerm_api_management.apim.name
+  resource_group_name   = azurerm_resource_group.apim.name
+  display_name          = "Pay Product"
+  subscription_required = true
+  approval_required     = true
+  published             = true
+}
+
+resource "azurerm_api_management_product_group" "api-dev" {
+  product_id          = azurerm_api_management_product.prod-pay.product_id
+  group_name          = azurerm_api_management_group.apim-devs.name
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_api_management.apim.resource_group_name
+}
+
+resource "azurerm_api_management_product_group" "api-ext" {
+  product_id          = azurerm_api_management_product.prod-pay.product_id
+  group_name          = azurerm_api_management_group.apim-external.name
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_api_management.apim.resource_group_name
+}
