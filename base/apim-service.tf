@@ -108,3 +108,24 @@ resource "azurerm_api_management_product_group" "api-ext" {
   api_management_name = azurerm_api_management.apim.name
   resource_group_name = azurerm_api_management.apim.resource_group_name
 }
+
+resource "azurerm_api_management_product_group" "api-dev2" {
+  product_id          = azurerm_api_management_product.prod-free.product_id
+  group_name          = azurerm_api_management_group.apim-devs.name
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_api_management.apim.resource_group_name
+}
+
+data "azurerm_api_management_group" "guests" {
+  name                = "guests"
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_api_management.apim.resource_group_name
+}
+
+resource "azurerm_api_management_product_group" "api-guests" {
+  product_id          = azurerm_api_management_product.prod-free.product_id
+  group_name          = data.azurerm_api_management_group.guests.name
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_api_management.apim.resource_group_name
+}
+
