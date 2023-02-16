@@ -1,0 +1,15 @@
+<policies>
+    <inbound>
+        <base />
+        <rate-limit-by-key calls="500" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" increment-condition="@(context.Response.StatusCode >= 200 && context.Response.StatusCode < 300)" />
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>

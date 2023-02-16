@@ -1,5 +1,7 @@
 locals {
-  apim_policy_path = format("%s%s", var.apim_policies_path, "apim_policy.xml")
+  apim_policy_path_global = format("%s%s", var.apim_policies_path, "apim_policy_global.xml")
+  apim_policy_path_free = format("%s%s", var.apim_policies_path, "apim_policy_free.xml")
+  apim_policy_path_pay = format("%s%s", var.apim_policies_path, "apim_policy_pay.xml")
 }
 
 resource "azurerm_resource_group" "apim" {
@@ -38,7 +40,7 @@ resource "azurerm_api_management" "apim" {
 
   notification_sender_email = "apimgmt-noreply@mail.windowsazure.com"
   policy {
-    xml_content = file(local.apim_policy_path)
+    xml_content = file(local.apim_policy_path_global)
   }
 
   publisher_email      = "russell.smith@microsoft.com"
@@ -128,4 +130,22 @@ resource "azurerm_api_management_product_group" "api-guests" {
   api_management_name = azurerm_api_management.apim.name
   resource_group_name = azurerm_api_management.apim.resource_group_name
 }
+
+resource "azurerm_api_management_product_policy" "policy-free" {
+  product_id          = azurerm_api_management_product.prod-free.product_id
+  api_management_name = azurerm_api_management_product.apim.api_management_name
+  resource_group_name = azurerm_api_management_product.apim.resource_group_name
+
+  xml_content = file(local.apim_policy_path_free)
+
+}
+
+resource "azurerm_api_management_product_policy" "policy-pay" {
+  product_id          = azurerm_api_management_product.prod-pay.product_id
+  api_management_name = azurerm_api_management_product.apim.api_management_name
+  resource_group_name = azurerm_api_management_product.apim.resource_group_name
+
+  xml_content = file(local.apim_policy_path_pay)
+}
+
 
