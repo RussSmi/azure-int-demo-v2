@@ -90,6 +90,7 @@ resource "azurerm_api_management_product" "prod-pay" {
   resource_group_name   = azurerm_resource_group.apim.name
   display_name          = "Pay Product"
   subscription_required = true
+  subscriptions_limit   = 10
   approval_required     = true
   published             = true
 }
