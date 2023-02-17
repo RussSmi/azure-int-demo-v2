@@ -1,13 +1,13 @@
 <policies>
     <inbound>
-        <base />   
-        <rate-limit-by-key calls="5" renewal-period="10" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+        <base />           
     </inbound>
     <backend>
         <base />
     </backend>
     <outbound>
         <base />
+        <json-to-xml apply="always" consider-accept-header="true" parse-date="true" />
     </outbound>
     <on-error>
         <base />
