@@ -8,6 +8,7 @@
                 "inputs": {
                     "content": "@triggerBody()",
                     "map": {
+                        "source": "LogicApp",
                         "name": "jsontrans.liquid"
                     }
                 },
@@ -40,7 +41,10 @@
                 "kind": "http",
                 "inputs": {
                     "statusCode": 200,
-                    "body": "Successfully sent the follwoing content to Service Bus:\n@{body('Transform_JSON_To_JSON')}"
+                    "headers": {
+                        "content-type": "application/json"
+                    },
+                    "body": "@body('Transform_JSON_To_JSON')?['body']"
                 },
                 "runAfter": {
                     "Send_message": [
@@ -53,7 +57,10 @@
                 "kind": "http",
                 "inputs": {
                     "statusCode": 500,
-                    "body": "Failed to send message to service bus, content was:\n@{body('Transform_JSON_To_JSON')}"
+                    "headers": {
+                        "content-type": "text/plain"
+                    },
+                    "body": "Logic App completed - Failed to send message to service bus, content was:\n@{body('Transform_JSON_To_JSON')?['body']}"
                 },
                 "runAfter": {
                     "Send_message": [
