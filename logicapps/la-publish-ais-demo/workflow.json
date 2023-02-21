@@ -44,7 +44,7 @@
                     "headers": {
                         "content-type": "application/json"
                     },
-                    "body": "@body('Transform_JSON_To_JSON')?['body']"
+                    "body": "@body('Transform_JSON_To_JSON')"
                 },
                 "runAfter": {
                     "Send_message": [

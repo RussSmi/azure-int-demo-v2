@@ -39,3 +39,4 @@ bicep/deploy.local.json
 tests/apitests.http
 .terraform/providers/registry.terraform.io/hashicorp/azuread/2.33.0/linux_amd64/terraform-provider-azuread_v2.33.0_x5
 .terraform/providers/registry.terraform.io/hashicorp/azurerm/3.43.0/linux_amd64/terraform-provider-azurerm_v3.43.0_x5
+data/1340722Z.json
