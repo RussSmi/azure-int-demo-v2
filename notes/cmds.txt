@@ -30,6 +30,16 @@ tf import -var-file=nonprod.tfvars azurerm_application_insights.la-appins "/subs
 tf import -var-file=nonprod.tfvars azurerm_logic_app_standard.la-standard 
 tf import -var-file=nonprod.tfvars azurerm_service_plan.la-plan "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-nonprod/providers/Microsoft.Web/serverfarms/lappst-plan-ais-demo-nonprod"
 
+tf import -var-file=prod.tfvars azurerm_app_service_plan.la-plan "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-prod/providers/Microsoft.Web/serverfarms/lappst-plan-ais-demo-prod"
+
+tf import -var-file=env/prod.tfvars azurerm_storage_account.la-storage "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-prod/providers/Microsoft.Storage/storageAccounts/laaisdemostrg2prod"
+
+tf import -var-file=prod.tfvars azurerm_logic_app_standard.la-standard "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-prod/providers/Microsoft.Web/sites/lapp-aisdemo-prod"
+tf import -var-file=prod.tfvars azurerm_application_insights.la-appins "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-prod/providers/microsoft.insights/components/app-ins-lappst-prod"
+tf import -var-file=prod.tfvars azurerm_logic_app_standard.la-standard 
+tf import -var-file=prod.tfvars azurerm_service_plan.la-plan "/subscriptions/0fbef83c-cd34-4194-848c-f15d2b296ab3/resourceGroups/rg-uks-ais-demo-lappsingleten-prod/providers/Microsoft.Web/serverfarms/lappst-plan-ais-demo-prod"
+
+
 DefaultEndpointsProtocol=https;AccountName=laaisdemostrg2nonprod;AccountKey=regOfeCbhTsGugh57vNYwKAwZjr5Xab/mZzEtq/rbH05Qi3nlcYG1s5mlTxHP0gWCeSZMqeQLG0I+AStlUq8mA==;EndpointSuffix=core.windows.net;
 DefaultEndpointsProtocol=https;AccountName=laaisdemostrg2nonprod;AccountKey=regOfeCbhTsGugh57vNYwKAwZjr5Xab/mZzEtq/rbH05Qi3nlcYG1s5mlTxHP0gWCeSZMqeQLG0I+AStlUq8mA==;EndpointSuffix=core.windows.net
 DefaultEndpointsProtocol=https;AccountName=laaisdemostrg2nonprod;EndpointSuffix=core.windows.net;AccountKey=regOfeCbhTsGugh57vNYwKAwZjr5Xab/mZzEtq/rbH05Qi3nlcYG1s5mlTxHP0gWCeSZMqeQLG0I+AStlUq8mA==
