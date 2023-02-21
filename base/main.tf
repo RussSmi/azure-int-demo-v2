@@ -88,9 +88,8 @@ resource "azurerm_monitor_diagnostic_setting" "keyvault" {
   log_analytics_workspace_id     = azurerm_log_analytics_workspace.log_analytics.id
   log_analytics_destination_type = "Dedicated"
 
-  log {
+  enabled_log {
     category = "AuditEvent"
-    enabled  = false
 
     retention_policy {
       enabled = false
