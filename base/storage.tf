@@ -2,8 +2,6 @@ resource "azurerm_resource_group" "storage" {
   name     = "${var.resource_group_name}-storage-${lower(var.environment)}"
   location = var.location
   tags     = var.tags
-
-
 }
 
 resource "azurerm_storage_account" "storage" {
