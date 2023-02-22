@@ -6,8 +6,8 @@
         <base />
     </backend>
     <outbound>
-        <base />
         <json-to-xml apply="always" consider-accept-header="true" parse-date="true" />
+        <base />        
     </outbound>
     <on-error>
         <base />
