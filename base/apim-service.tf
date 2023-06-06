@@ -81,7 +81,7 @@ resource "azurerm_api_management_diagnostic" "apim" {
   sampling_percentage       = 100.0
   always_log_errors         = true
   log_client_ip             = true
-  verbosity                 = "Verbose"
+  verbosity                 = "verbose"
   http_correlation_protocol = "W3C"
 
   frontend_request {
