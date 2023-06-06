@@ -2,6 +2,8 @@ locals {
   apim_policy_path_global = format("%s%s", var.apim_policies_path, "apim_policy_global.xml")
   apim_policy_path_free   = format("%s%s", var.apim_policies_path, "apim_policy_free.xml")
   apim_policy_path_pay    = format("%s%s", var.apim_policies_path, "apim_policy_pay.xml")
+  apim_logger             = format("apimlogger%s", var.environment)
+  apim_diagnostics        = format("apimdiagnostics%s", var.environment)
 }
 
 resource "azurerm_resource_group" "apim" {
@@ -56,6 +58,65 @@ resource "azurerm_api_management" "apim" {
   lifecycle {
     ignore_changes = [
       tags, policy.0.xml_content, hostname_configuration,
+    ]
+  }
+}
+
+resource "azurerm_api_management_logger" "apim" {
+  name                = local.apim_logger
+  api_management_name = azurerm_api_management.apim.name
+  resource_group_name = azurerm_resource_group.apim.name
+
+  application_insights {
+    instrumentation_key = azurerm_application_insights.apim.instrumentation_key
+  }
+}
+
+resource "azurerm_api_management_diagnostic" "apim" {
+  identifier               = local.apim_diagnostics
+  resource_group_name      = azurerm_resource_group.apim.name
+  api_management_name      = azurerm_api_management.apim.name
+  api_management_logger_id = azurerm_api_management_logger.apim.id
+
+  sampling_percentage       = 100.0
+  always_log_errors         = true
+  log_client_ip             = true
+  verbosity                 = "Verbose"
+  http_correlation_protocol = "W3C"
+
+  frontend_request {
+    body_bytes = 32
+    headers_to_log = [
+      "content-type",
+      "accept",
+      "origin",
+    ]
+  }
+
+  frontend_response {
+    body_bytes = 32
+    headers_to_log = [
+      "content-type",
+      "content-length",
+      "origin",
+    ]
+  }
+
+  backend_request {
+    body_bytes = 32
+    headers_to_log = [
+      "content-type",
+      "accept",
+      "origin",
+    ]
+  }
+
+  backend_response {
+    body_bytes = 32
+    headers_to_log = [
+      "content-type",
+      "content-length",
+      "origin",
     ]
   }
 }
