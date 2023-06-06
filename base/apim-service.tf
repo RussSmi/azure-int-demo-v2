@@ -3,7 +3,6 @@ locals {
   apim_policy_path_free   = format("%s%s", var.apim_policies_path, "apim_policy_free.xml")
   apim_policy_path_pay    = format("%s%s", var.apim_policies_path, "apim_policy_pay.xml")
   apim_logger             = format("apimlogger%s", var.environment)
-  apim_diagnostics        = format("apimdiagnostics%s", var.environment)
 }
 
 resource "azurerm_resource_group" "apim" {
@@ -73,7 +72,7 @@ resource "azurerm_api_management_logger" "apim" {
 }
 
 resource "azurerm_api_management_diagnostic" "apim" {
-  identifier               = local.apim_diagnostics
+  identifier               = "applicationinsights"
   resource_group_name      = azurerm_resource_group.apim.name
   api_management_name      = azurerm_api_management.apim.name
   api_management_logger_id = azurerm_api_management_logger.apim.id
