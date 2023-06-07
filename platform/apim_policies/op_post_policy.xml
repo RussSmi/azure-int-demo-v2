@@ -6,7 +6,7 @@
         <base />
     </backend>
     <outbound>
-        <!--json-to-xml apply="always" consider-accept-header="false" parse-date="true" /-->
+        <json-to-xml apply="always" consider-accept-header="false" parse-date="true" />
         <base />        
     </outbound>
     <on-error>

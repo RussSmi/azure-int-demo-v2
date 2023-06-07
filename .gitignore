@@ -42,3 +42,4 @@ tests/apitests.http
 data/1340722Z.json
 .terraform/providers/registry.terraform.io/hashicorp/azuread/2.36.0/linux_amd64/terraform-provider-azuread_v2.36.0_x5
 .terraform/providers/registry.terraform.io/hashicorp/azurerm/3.47.0/linux_amd64/terraform-provider-azurerm_v3.47.0_x5
+ft.plan
