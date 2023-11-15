@@ -7,5 +7,12 @@
     "azureLogicAppsStandard.projectLanguage": "JavaScript",
     "azureLogicAppsStandard.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.suppressProject": true
+    "azureFunctions.suppressProject": true,
+    "azurite.location": "C:\\Users\\rusmith\\.azurelogicapps\\.azurite",
+    "terminal.integrated.env.windows": {
+        "PATH": "C:\\Users\\rusmith\\.azurelogicapps\\dependencies\\DotNetSDK;${env:PATH}"
+    },
+    "omnisharp.dotNetCliPaths": [
+        "C:\\Users\\rusmith\\.azurelogicapps\\dependencies\\DotNetSDK"
+    ]
 }
